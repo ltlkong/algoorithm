@@ -5,4 +5,4 @@ def hanoi(n, a, b, c):
         hanoi(n-1, b, a, c)
 
 
-hanoi(30, "a", "b", "c")
+hanoi(3, "a", "b", "c")
