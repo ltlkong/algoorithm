@@ -3,7 +3,11 @@
 17 Oct
 
 ## My tries:
+
 **(Wrong)** My solution (Incorrect time complexty):
+
+Merge two arrays:
+
     mid = (len(nums1) + len(nums2)) // 2
     isOdd = (len(nums1) + len(nums2)) % 2 > 0
     merge = []
@@ -33,30 +37,46 @@
 Time complexity O((m + n) / 2)
 
 Steps:
+
 1. Calculate middle of the two arrays
-2. Declare a merged array, merge two array until reach middle
+2. Merge two arrays until reach the middle
 3. if two arrays length sum is odd return the middle, otherwise return (middle + middle - 1) /2
 
 ## Viewed answere:
-Using Stack
 
-     maxArea = 0
-            stack = [-1]
-            heights.append(-2)
-        
-            for i in range(len(heights)):
-                while heights[i] < heights[stack[-1]] and stack[-1] > -1:
-                    numI = stack.pop()
-                    area = (i - stack[-1] - 1) * heights[numI]
-                    maxArea = max(area, maxArea)
-                stack.append(i)
-                   
-            return maxArea
+Using partions:
+
+    if len(nums1) > len(nums2):
+        nums1, nums2 = nums2, nums1
+
+
+    l, r = 0, len(nums1) - 1
+    half = (len(nums1) + len(nums2)) // 2
+
+
+    while True:
+        mid =  (l + r) // 2
+        midB = half - mid - 2
+
+        aL = nums1[mid] if mid >= 0 else float("-infinity")
+        aR = nums1[mid + 1] if mid + 1 < len(nums1) else float("infinity")
+        bL = nums2[midB] if midB >= 0 else float("-infinity")
+        bR = nums2[midB + 1] if midB + 1 < len(nums2) else float("infinity")
+
+        if aL <= bR and bL <= aR:
+            if (len(nums1) + len(nums2)) % 2:
+                return min(aR, bR)
+            else:
+                return round((max(aL, bL) + min(bR, aR)) / 2,1)
+        elif aL > bR:
+            r = mid - 1
+        else:
+            l = mid + 1
             
-Time complexity On
+Time complexity Olog(m+n)
 
 Steps:
-1. Defind a stack
-2. Loop the list
-3. Append the stack when the index numbergreater than the top stack, pop stack when the index number smaller.
 
+1. Calculate middle of the two arrays
+2. Separate the two arrays from middle using binary search
+3 Return 
