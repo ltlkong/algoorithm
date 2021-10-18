@@ -1,3 +1,3 @@
 # algorithm
 
-My Leetcode account: ![ltlkong](https://leetcode.com/ltlkong/)
+My Leetcode account: [ltlkong](https://leetcode.com/ltlkong/)
