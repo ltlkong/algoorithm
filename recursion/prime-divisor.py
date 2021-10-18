@@ -13,9 +13,9 @@ def refactorPrimeDivisor(num: int) -> List[int]:
         if num % divisor == 0 and isPrime(divisor):
             num = num//divisor
             result.append(divisor)
-            refactor(num, divisor, result)
         else:
-            refactor(num, divisor+1, result)
+            divisor += 1
+        refactor(num, divisor, result)
     refactor(num, divisor, result)
 
     return result
